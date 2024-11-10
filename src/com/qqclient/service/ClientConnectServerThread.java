@@ -35,6 +35,16 @@ public class ClientConnectServerThread extends Thread{
                     for (int i=0; i < onlineList.length; i++) {
                         System.out.println("User: " + onlineList[i]);
                     }
+                } else if (msg.getMsgType().equals(MessageType.MESSAGE_COMM_MESS)) {
+                    String sendId = msg.getSender();
+                    String receiverId = msg.getReceiver();
+                    String content = msg.getContent();
+
+                    System.out.println(sendId + " send a message to " + receiverId+" : "+content);
+
+
+
+
                 } else {
                     System.out.println("Other Msg Type");
                 }

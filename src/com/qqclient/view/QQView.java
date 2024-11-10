@@ -1,6 +1,7 @@
 package com.qqclient.view;
 
 import com.qqclient.service.ManageClientConnectServerThread;
+import com.qqclient.service.MessageClientService;
 import com.qqclient.service.UserClientService;
 import com.qqclient.utility.Utility;
 import com.qqcommon.Message;
@@ -17,6 +18,8 @@ public class QQView {
     private String key = "";
 
     private UserClientService userClientService = new UserClientService();
+
+    private MessageClientService messageClientService = new MessageClientService();
 
 
     public static void main(String[] args) {
@@ -62,7 +65,13 @@ public class QQView {
                                     break;
 
                                 case "3":
-                                    System.out.println("\t\t Private message");
+                                    System.out.print("Please enter User ID to send a message: ");
+                                    String recieverId = Utility.readString(50);
+
+                                    System.out.print("Please enter message content: ");
+                                    String messageContent = Utility.readString(100);
+                                    messageClientService.sendMsgToOne(messageContent, qqID, recieverId);
+
                                     break;
 
                                 case "4":
