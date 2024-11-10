@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class QQView {
+    //start
 
     private boolean loop = true;
     private String key = "";
