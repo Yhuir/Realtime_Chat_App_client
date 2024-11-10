@@ -1,5 +1,6 @@
 package com.qqclient.view;
 
+import com.qqclient.service.FileClientService;
 import com.qqclient.service.ManageClientConnectServerThread;
 import com.qqclient.service.MessageClientService;
 import com.qqclient.service.UserClientService;
@@ -20,6 +21,8 @@ public class QQView {
     private UserClientService userClientService = new UserClientService();
 
     private MessageClientService messageClientService = new MessageClientService();
+
+    private FileClientService fileClientService = new FileClientService();
 
 
     public static void main(String[] args) {
@@ -80,7 +83,16 @@ public class QQView {
                                     break;
 
                                 case "4":
-                                    System.out.println("\t\t Send file");
+                                    System.out.print("Please enter user ID to send: ");
+                                    String receiverId = Utility.readString(50);
+
+                                    System.out.print("Please enter file path to send: ");
+                                    String src = Utility.readString(50);
+
+                                    System.out.print("Please enter file path to save on user side: ");
+                                    String dest = Utility.readString(50);
+
+                                    fileClientService.sendFileToOne(src, dest, qqID, receiverId);
                                     break;
 
                                 case "9":

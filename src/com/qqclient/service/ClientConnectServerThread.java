@@ -3,8 +3,7 @@ package com.qqclient.service;
 import com.qqcommon.Message;
 import com.qqcommon.MessageType;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class ClientConnectServerThread extends Thread{
@@ -48,6 +47,16 @@ public class ClientConnectServerThread extends Thread{
                     String content = msg.getContent();
 
                     System.out.println(sendId + " send a message to everyone: "+content);
+
+
+                } else if (msg.getMsgType().equals(MessageType.MESSAGE_FILE_MESS)) {
+                    System.out.println(
+                            "\n" + msg.getSender() + " send " + msg.getSrc() + " to " + msg.getReceiver() + " at " + msg.getDest());
+
+                    FileOutputStream fos = new FileOutputStream(msg.getDest());
+                    fos.write(msg.getFileByte());
+                    fos.close();
+                    System.out.println("File saved..");
 
 
                 } else {
