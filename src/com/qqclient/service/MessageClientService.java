@@ -31,7 +31,28 @@ public class MessageClientService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void sendMsgToAll(String sendId, String content) {
+        Message message = new Message();
+        message.setSender(sendId);
+        message.setMsgType(MessageType.MESSAGE_All_MESS);
+        message.setContent(content);
+        message.setSendTime(new Date().toString());
+
+        System.out.println(sendId+ " send message to everyone: "+ content);
+
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(
+                    ManageClientConnectServerThread.getClientConnectServerThread(sendId).getSocket().getOutputStream());
+
+            oos.writeObject(message);
+
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

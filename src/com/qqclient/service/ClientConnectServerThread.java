@@ -43,6 +43,11 @@ public class ClientConnectServerThread extends Thread{
                     System.out.println(sendId + " send a message to " + receiverId+" : "+content);
 
 
+                } else if (msg.getMsgType().equals(MessageType.MESSAGE_All_MESS)) {
+                    String sendId = msg.getSender();
+                    String content = msg.getContent();
+
+                    System.out.println(sendId + " send a message to everyone: "+content);
 
 
                 } else {

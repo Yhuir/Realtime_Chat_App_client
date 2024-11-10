@@ -61,7 +61,12 @@ public class QQView {
                                     break;
 
                                 case "2":
-                                    System.out.println("\t\t Group message");
+                                    System.out.print("Please enter message to all users: ");
+                                    String content = Utility.readString(100);
+                                    messageClientService.sendMsgToAll(qqID, content);
+
+
+
                                     break;
 
                                 case "3":
