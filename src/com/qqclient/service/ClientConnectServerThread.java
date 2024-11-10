@@ -59,6 +59,9 @@ public class ClientConnectServerThread extends Thread{
                     System.out.println("File saved..");
 
 
+                } else if (msg.getMsgType().equals(MessageType.MESSAGE_NEWS)) {
+                    System.out.println("\n" + msg.getSender() + " send to everyone: " + msg.getContent());
+
                 } else {
                     System.out.println("Other Msg Type");
                 }
